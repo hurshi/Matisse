@@ -130,6 +130,9 @@ public class MatisseActivity extends AppCompatActivity implements
         mAlbumCollection.onCreate(this, this);
         mAlbumCollection.onRestoreInstanceState(savedInstanceState);
         mAlbumCollection.loadAlbums();
+
+        findViewById(R.id.bottom_toolbar).setVisibility(SelectionSpec.getInstance().single ? View.GONE : View.VISIBLE);
+
     }
 
     @Override
@@ -322,6 +325,11 @@ public class MatisseActivity extends AppCompatActivity implements
         intent.putExtra(AlbumPreviewActivity.EXTRA_ITEM, item);
         intent.putExtra(BasePreviewActivity.EXTRA_DEFAULT_BUNDLE, mSelectedCollection.getDataWithBundle());
         startActivityForResult(intent, REQUEST_CODE_PREVIEW);
+    }
+
+    @Override
+    public void onMediaSubmit() {
+        mButtonApply.performClick();
     }
 
     @Override

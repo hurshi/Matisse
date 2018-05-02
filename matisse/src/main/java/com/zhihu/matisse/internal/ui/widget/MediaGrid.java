@@ -101,6 +101,10 @@ public class MediaGrid extends SquareFrameLayout implements View.OnClickListener
         mCheckView.setEnabled(enabled);
     }
 
+    public void setCheckVisible(boolean visible) {
+        mCheckView.setVisibility(visible ? View.VISIBLE : View.GONE);
+    }
+
     public void setCheckedNum(int checkedNum) {
         mCheckView.setCheckedNum(checkedNum);
     }

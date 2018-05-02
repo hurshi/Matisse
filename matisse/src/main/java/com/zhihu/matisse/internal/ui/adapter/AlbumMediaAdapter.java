@@ -126,7 +126,9 @@ public class AlbumMediaAdapter extends
     }
 
     private void setCheckStatus(Item item, MediaGrid mediaGrid) {
-        if (mSelectionSpec.countable) {
+        if (mSelectionSpec.single) {
+            mediaGrid.setCheckVisible(false);
+        } else if (mSelectionSpec.countable) {
             int checkedNum = mSelectedCollection.checkedNumOf(item);
             if (checkedNum > 0) {
                 mediaGrid.setCheckEnabled(true);
@@ -160,7 +162,12 @@ public class AlbumMediaAdapter extends
     @Override
     public void onThumbnailClicked(ImageView thumbnail, Item item, RecyclerView.ViewHolder holder) {
         if (mOnMediaClickListener != null) {
-            mOnMediaClickListener.onMediaClick(null, item, holder.getAdapterPosition());
+            if (mSelectionSpec.single) {
+                mSelectedCollection.add(item);
+                mOnMediaClickListener.onMediaSubmit();
+            } else {
+                mOnMediaClickListener.onMediaClick(null, item, holder.getAdapterPosition());
+            }
         }
     }
 
@@ -261,6 +268,8 @@ public class AlbumMediaAdapter extends
 
     public interface OnMediaClickListener {
         void onMediaClick(Album album, Item item, int adapterPosition);
+
+        void onMediaSubmit();
     }
 
     public interface OnPhotoCapture {

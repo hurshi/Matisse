@@ -142,6 +142,17 @@ public final class SelectionCreator {
     }
 
     /**
+     * choose single img without preview,single choose will disable countable,maxSelectable settings
+     *
+     * @param single true for enable single choose,false to disable single choose
+     * @return {@link SelectionCreator} for fluent API.
+     */
+    public SelectionCreator single(boolean single) {
+        mSelectionSpec.single = single;
+        return this;
+    }
+
+    /**
      * Maximum selectable count.
      *
      * @param maxSelectable Maximum selectable count. Default value is 1.

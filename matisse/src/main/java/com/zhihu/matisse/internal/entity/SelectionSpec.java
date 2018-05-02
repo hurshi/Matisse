@@ -38,6 +38,7 @@ public final class SelectionSpec {
     public int themeId;
     public int orientation;
     public boolean countable;
+    public boolean single;
     public int maxSelectable;
     public int maxImageSelectable;
     public int maxVideoSelectable;
@@ -70,6 +71,7 @@ public final class SelectionSpec {
         themeId = R.style.Matisse_Zhihu;
         orientation = 0;
         countable = false;
+        single = false;
         maxSelectable = 1;
         maxImageSelectable = 0;
         maxVideoSelectable = 0;

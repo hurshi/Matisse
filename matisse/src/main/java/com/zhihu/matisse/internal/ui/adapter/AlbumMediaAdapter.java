@@ -215,6 +215,7 @@ public class AlbumMediaAdapter extends
         return cause == null;
     }
 
+
     public void registerCheckStateListener(CheckStateListener listener) {
         mCheckStateListener = listener;
     }
